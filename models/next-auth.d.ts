@@ -11,7 +11,15 @@ declare module "next-auth" {
       tenTK: string;
       name: string;
       quyen: any;
-      soDu: string;
+      taiKhoan: {
+        id: number;
+        maQuyen: number;
+        maNguoiDung: number;
+        tenTK: string;
+        matKhau: string;
+        trangThai: number;
+        soDu: number;
+      };
       baiDangUaThich: typeListRealEstate[];
     };
   }
