@@ -19,7 +19,7 @@
     "@nextui-org/input": "^2.1.18",
     "@nextui-org/pagination": "^2.0.28",
     "@nextui-org/react": "^2.0.22",
-    "@nextui-org/select": "^2.1.22",
+    "@nextui-org/select": "^2.1.23",
     "@nextui-org/slider": "^2.2.7",
     "apexcharts": "^3.35.5",
     "axios": "^1.6.8",

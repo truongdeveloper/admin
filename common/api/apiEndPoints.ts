@@ -111,3 +111,14 @@ export const PUT_POST_APPROVE = {
   url: BASE_URL + "/quan-ly-bai-dang/duyet-bai-dang",
   method: "put" as Methods,
 };
+
+export const GET_LIST_ACCOUNTS = {
+  key: "dashboard/accounts",
+  url: BASE_URL + "/quan-ly-tai-khoan/danh-sach-tai-khoan",
+  method: "get" as Methods,
+};
+
+export const PUT_PERMISSION_ACCOUNT = {
+  url: BASE_URL + "/quan-ly-tai-khoan/cap-quyen-tai-khoan",
+  method: "put" as Methods,
+};

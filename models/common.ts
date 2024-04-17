@@ -69,7 +69,7 @@ export interface tienNghi {
 
 export interface Account {
   id: number;
-  maQuyen: any;
+  maQuyen: number;
   maNguoiDung: number;
   tenTK: string;
   matKhau: string;
