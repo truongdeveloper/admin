@@ -9,7 +9,10 @@ const PageBody = () => {
 
   useEffect(() => {
     getSession().then((session) => {
-      if (session?.user.quyen[0].authority !== "Người dùng") {
+      if (
+        session?.user.quyen[0].authority == "Quản trị viên" ||
+        session?.user.quyen[0].authority == "Cộng tác viên"
+      ) {
         setTimeout(() => {
           router.push("/dashboard");
         }, 500);

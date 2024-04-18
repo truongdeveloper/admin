@@ -72,6 +72,7 @@ const LoginBody = () => {
         className="bg-white box-shadow-sm dark:bg-gray-900 rounded-lg px-8 py-6 max-w-md"
         style={{
           width: "30rem",
+          boxShadow: "rgba(0, 0, 0, 0.35) 0px 5px 15px",
         }}
       >
         <h1 className="text-2xl font-bold text-center mb-4 dark:text-gray-200">
@@ -126,7 +127,7 @@ const LoginBody = () => {
             </a> */}
           </div>
           <div className="flex items-center justify-between mb-4">
-            <div className="flex items-center">
+            {/* <div className="flex items-center">
               <input
                 type="checkbox"
                 id="remember"
@@ -135,13 +136,13 @@ const LoginBody = () => {
               <label className="ml-2 block text-sm text-gray-700 dark:text-gray-300">
                 Remember me
               </label>
-            </div>
+            </div> */}
           </div>
           <button
             type="submit"
             className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
           >
-            Login
+            Đăng nhập
           </button>
         </form>
       </div>

@@ -11,6 +11,7 @@ declare module "next-auth" {
       tenTK: string;
       name: string;
       quyen: any;
+      anhDaiDien: any;
       taiKhoan: {
         id: number;
         maQuyen: number;

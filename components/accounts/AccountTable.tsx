@@ -100,7 +100,7 @@ const AccountTable = ({
         >
           {!isEmpty(dataAccount)
             ? dataAccount.map((item: Account) => (
-                <TableRow key={uniqueId()}>
+                <TableRow key={uniqueId()} className="h-16">
                   <TableCell className="font-[500] text-base">
                     {item.id}
                   </TableCell>

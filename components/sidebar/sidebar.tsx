@@ -7,6 +7,7 @@ import { BalanceIcon } from "../icons/sidebar/balance-icon";
 import { AccountsIcon } from "../icons/sidebar/accounts-icon";
 import { CustomersIcon } from "../icons/sidebar/customers-icon";
 import { ProductsIcon } from "../icons/sidebar/products-icon";
+import { ViewIcon } from "../icons/sidebar/view-icon";
 import { ReportsIcon } from "../icons/sidebar/reports-icon";
 import { CollapseItems } from "./collapse-items";
 import { SidebarItem } from "./sidebar-item";
@@ -43,7 +44,7 @@ export const SidebarWrapper = () => {
             />
             <SidebarMenu title="Main Menu">
               <SidebarItem
-                isActive={pathname === "dashboard/accounts"}
+                isActive={pathname === "/dashboard/accounts"}
                 title="Quản lý Tài kkhoản"
                 icon={<AccountsIcon />}
                 href="/dashboard/accounts"
@@ -53,7 +54,21 @@ export const SidebarWrapper = () => {
                 title="Thống kê thanh toán"
                 icon={<PaymentsIcon />}
               />
-              <CollapseItems
+              <SidebarItem
+                isActive={
+                  pathname === "/dashboard/post-management/approve-post"
+                }
+                title="Duyệt bài đăng"
+                icon={<ViewIcon />}
+                href="/dashboard/post-management/approve-post"
+              />
+              {/* <SidebarItem
+                isActive={pathname === "/dashboard/post-management"}
+                title="Danh sách bài đăng"
+                icon={<BalanceIcon />}
+                href="/dashboard/post-management"
+              /> */}
+              {/* <CollapseItems
                 icon={<BalanceIcon />}
                 items={[
                   {
@@ -67,10 +82,10 @@ export const SidebarWrapper = () => {
                 ]}
                 title="Quản lý bài đăng"
                 isActive={false}
-              />
+              /> */}
               <SidebarItem
                 isActive={pathname === "/customers"}
-                title="Quản lý Bất động sản"
+                title="Quản lý Gói"
                 icon={<CustomersIcon />}
               />
               <SidebarItem
