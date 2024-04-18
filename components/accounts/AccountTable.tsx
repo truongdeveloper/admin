@@ -86,6 +86,7 @@ const AccountTable = ({
     <div className=" w-full flex flex-col gap-4">
       <Table>
         <TableHeader>
+          <TableColumn>Mã tài khoản</TableColumn>
           <TableColumn>Tên tài khoản</TableColumn>
           <TableColumn>Số dư</TableColumn>
           <TableColumn>Quyền</TableColumn>
@@ -100,6 +101,9 @@ const AccountTable = ({
           {!isEmpty(dataAccount)
             ? dataAccount.map((item: Account) => (
                 <TableRow key={uniqueId()}>
+                  <TableCell className="font-[500] text-base">
+                    {item.id}
+                  </TableCell>
                   <TableCell className="font-semibold text-base">
                     {item.tenTK}
                   </TableCell>
@@ -166,7 +170,7 @@ const AccountTable = ({
                             </button>
                           </Tooltip>
                         ) : (
-                          <Tooltip content=" Mở khóa tài khoản" color="danger">
+                          <Tooltip content=" Mở khóa tài khoản" color="success">
                             <button onClick={() => console.log("Edit user")}>
                               <FontAwesomeIcon icon={faLockOpen} />
                             </button>

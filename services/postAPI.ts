@@ -3,6 +3,7 @@ import {
   GET_POST_BY_STATUS,
   GET_SIMPLE_POST,
   PUT_POST_APPROVE,
+  PUT_POST_REJECT,
 } from "@/common/api/apiEndPoints";
 
 class PostAPI {
@@ -32,6 +33,16 @@ class PostAPI {
     return axiosService({
       url: url ? url : PUT_POST_APPROVE.url,
       method: "put",
+    });
+  }
+  putPostReject(idPost: number | undefined, idAccount: number | undefined) {
+    return axiosService({
+      url: PUT_POST_REJECT.url,
+      method: "put",
+      body: {
+        maBD: idPost,
+        maTK: idAccount,
+      },
     });
   }
 }

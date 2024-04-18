@@ -8,6 +8,7 @@ import { ModalDetailPost } from "@/helper/ModalDetailPost";
 import { typeListRealEstate } from "@/models/common";
 import PostAPI from "@/services/postAPI";
 import {
+  faBan,
   faCheck,
   faCircleXmark,
   faHandshake,
@@ -44,6 +45,7 @@ const ApprovePostTable = ({
   const [confirmModal, setConfirmModal] = useState(false);
   const [selected, setSelected] = useState<typeListRealEstate | null>(null);
   const [modalDetail, setModalDetail] = useState(false);
+  const [rejectModal, setRejectModal] = useState(false);
 
   const handleApprovePost = () => {
     new PostAPI()
@@ -51,7 +53,7 @@ const ApprovePostTable = ({
         `${PUT_POST_APPROVE.url}?baiDang=${selected?.id}&nguoiKiemDuyet=${data?.user.id}`
       )
       ?.then((res) => {
-        if (res == "Thành công!") {
+        if (res.id == selected?.id) {
           toast("Duyệt bài đăng thành công", {
             type: "success",
           });
@@ -63,6 +65,21 @@ const ApprovePostTable = ({
         }
       });
     setConfirmModal(false);
+  };
+  const handleRejectPost = () => {
+    new PostAPI().putPostReject(selected?.id, data?.user.id)?.then((res) => {
+      if (res.id == selected?.id) {
+        toast("Đã từ chối bài viết", {
+          type: "warning",
+        });
+        setReload(true);
+      } else {
+        toast(res, {
+          type: "error",
+        });
+      }
+    });
+    setRejectModal(false);
   };
   return (
     <div className=" w-full flex flex-col gap-4">
@@ -155,6 +172,10 @@ const ApprovePostTable = ({
                           minWidth: "fit-content",
                           padding: "10px",
                         }}
+                        onClick={() => {
+                          setSelected(item);
+                          setRejectModal(true);
+                        }}
                       >
                         <FontAwesomeIcon icon={faCircleXmark} />
                       </Button>
@@ -172,6 +193,14 @@ const ApprovePostTable = ({
         content="Bài đăng sẽ được tìm kiếm ở công khai"
         icon={<FontAwesomeIcon icon={faHandshake} style={{ color: "green" }} />}
         onConfirm={handleApprovePost}
+      />
+      <ConfirmModal
+        isOpen={rejectModal}
+        setIsOpen={setRejectModal}
+        title="Từ chối bài đăng này"
+        content="Bài đăng sẽ được chuyển sang trạng thái từ chối"
+        icon={<FontAwesomeIcon icon={faBan} style={{ color: "red" }} />}
+        onConfirm={handleRejectPost}
       />
       <ModalDetailPost
         isOpen={modalDetail}

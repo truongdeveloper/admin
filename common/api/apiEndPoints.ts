@@ -112,6 +112,11 @@ export const PUT_POST_APPROVE = {
   method: "put" as Methods,
 };
 
+export const PUT_POST_REJECT = {
+  url: BASE_URL + "/quan-ly-bai-dang/tu-choi-bai-dang",
+  method: "put" as Methods,
+};
+
 export const GET_LIST_ACCOUNTS = {
   key: "dashboard/accounts",
   url: BASE_URL + "/quan-ly-tai-khoan/danh-sach-tai-khoan",

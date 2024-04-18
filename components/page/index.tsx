@@ -1,15 +1,23 @@
 "use client";
+import { getSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 const PageBody = () => {
-  const [login, setLogin] = useState(true);
   const router = useRouter();
+
   useEffect(() => {
-    if (login === true) {
-      router.push("/dashboard");
-    }
-  }, [login, router]);
+    getSession().then((session) => {
+      if (session?.user.quyen[0].authority !== "Người dùng") {
+        setTimeout(() => {
+          router.push("/dashboard");
+        }, 500);
+      } else {
+        router.push("/login");
+      }
+    });
+  }, [router]);
   return (
     <div>
       <h2 className="text-center" style={{ fontSize: "24px", color: "black" }}>
