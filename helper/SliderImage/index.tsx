@@ -10,7 +10,6 @@ export default function SliderImage({
 }) {
   var settings = {
     dots: true,
-
     speed: 500,
     slidesToShow: 1,
   };
@@ -27,6 +26,7 @@ export default function SliderImage({
                 src={item.url}
                 alt="Anh BDS"
                 className="rounded-lg"
+                style={{ maxHeight: "40vh", objectFit: "contain" }}
               />
             </div>
           </div>

@@ -203,7 +203,7 @@ const AccountTable = ({
             <RadioGroup
               label="Chọn phần quyền"
               onChange={handleChangePermission}
-              defaultValue={"3"}
+              defaultValue={selected?.maQuyen.toString() || "3"}
             >
               <Radio value="1">Quản trị viên</Radio>
               <Radio value="2">Cộng tác viên</Radio>

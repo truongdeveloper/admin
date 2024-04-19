@@ -18,6 +18,7 @@ import { Button } from "@nextui-org/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
 import { signOut } from "next-auth/react";
+import { DevIcon } from "../icons/sidebar/dev-icon";
 
 export const SidebarWrapper = () => {
   const pathname = usePathname();
@@ -61,6 +62,12 @@ export const SidebarWrapper = () => {
                 title="Duyệt bài đăng"
                 icon={<ViewIcon />}
                 href="/dashboard/post-management/approve-post"
+              />
+              <SidebarItem
+                isActive={pathname === "/dashboard/collaborators"}
+                title="Quản lý Cộng tác viên"
+                icon={<DevIcon />}
+                href="/dashboard/collaborators"
               />
               {/* <SidebarItem
                 isActive={pathname === "/dashboard/post-management"}
