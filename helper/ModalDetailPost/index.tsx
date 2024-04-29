@@ -31,10 +31,11 @@ export const ModalDetailPost = ({
       <>
         <Modal
           isOpen={isOpen}
-          placement="top-center"
+          placement="center"
           onOpenChange={toggle}
-          size="3xl"
-          style={{ overflowX: "hidden", marginTop: "120px" }}
+          scrollBehavior="inside"
+          size="4xl"
+          style={{ overflowX: "hidden", marginTop: "250px" }}
         >
           <ModalContent>
             <>

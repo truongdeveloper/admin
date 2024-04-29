@@ -26,7 +26,7 @@ export default function SliderImage({
                 src={item.url}
                 alt="Anh BDS"
                 className="rounded-lg"
-                style={{ maxHeight: "40vh", objectFit: "contain" }}
+                style={{ height: "300px", objectFit: "contain" }}
               />
             </div>
           </div>
@@ -40,6 +40,7 @@ export default function SliderImage({
               src={imageList[0].url}
               alt="Anh BDS"
               className="rounded-lg"
+              style={{ height: "300px", objectFit: "contain" }}
             />
           </div>
         </div>

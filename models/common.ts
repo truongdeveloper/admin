@@ -94,3 +94,15 @@ export interface typeRequest {
     tieuDe: string;
   };
 }
+
+export interface itemListPayment {
+  id: number;
+  maTK: number;
+  loaiThanhToan: number;
+  maBD: any;
+  maGoi: number;
+  thoiGian: string;
+  tongTien: number;
+  maGiaoDich: any;
+  trangThai: any;
+}

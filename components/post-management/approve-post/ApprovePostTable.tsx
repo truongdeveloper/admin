@@ -107,6 +107,11 @@ const ApprovePostTable = ({
                           width={120}
                           height={120}
                           className="image-row"
+                          style={{
+                            height: "120px",
+                            width: "120px",
+                            objectFit: "cover",
+                          }}
                           onError={(e: any) => {
                             e.target.onerror = null;
                             e.target.src = "https://picsum.photos/200";
@@ -121,7 +126,7 @@ const ApprovePostTable = ({
                           className="p-img"
                         />
                       )}
-                      <div className="ps-lg-4 md-pt-10 min-w-14">
+                      <div className="ps-lg-4 md-pt-10 min-w-14 max-w-56 text-ellipsis">
                         <button
                           className="hover:text-orange-500 font-bold text-[16px]"
                           onClick={() => {
