@@ -6,17 +6,19 @@ import { Input } from "@nextui-org/input";
 import { SettingsIcon } from "../icons/sidebar/settings-icon";
 import { InfoIcon } from "../icons/accounts/info-icon";
 import { DotsIcon } from "../icons/accounts/dots-icon";
-import PostTable from "./PaymentTable";
+
 import { Slider, SliderValue } from "@nextui-org/slider";
 import { debounce } from "lodash";
 import { Pagination } from "@nextui-org/pagination";
 import { itemListPayment, typeListRealEstate } from "@/models/common";
 import { useEffect, useState } from "react";
 import PostAPI from "@/services/postAPI";
-import PaymentTable from "./PaymentTable";
+import PaymentTable from "../payment-management/PaymentTable";
 import PaymentAPI from "@/services/paymentAPI";
+import PackageAPI from "@/services/packageAPI";
+import PackageTable from "./PackageTable";
 
-const PaymentManagementBody = () => {
+const PackageBody = () => {
   const [originalDataList, setOriginalDataList] = useState<any>([]);
   const [dataList, setDataList] = useState<any>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -33,8 +35,8 @@ const PaymentManagementBody = () => {
   };
 
   useEffect(() => {
-    new PaymentAPI()
-      .getListPayment(currentPage - 1, limit as number, STATUS)
+    new PackageAPI()
+      .getListPackage()
       ?.then((res: any) => {
         setLoadingState("idle");
         // setTotalPage(res.tongSoTrang);
@@ -101,9 +103,9 @@ const PaymentManagementBody = () => {
         />
       </div>
       <div className="max-w-[95rem] mx-auto w-full">
-        <PaymentTable
+        <PackageTable
           setReload={setReload}
-          dataPayment={dataList}
+          dataPackage={dataList}
           loadingState={loadingState}
         />
         <Pagination
@@ -118,4 +120,4 @@ const PaymentManagementBody = () => {
     </div>
   );
 };
-export default PaymentManagementBody;
+export default PackageBody;

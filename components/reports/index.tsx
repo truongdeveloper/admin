@@ -3,20 +3,17 @@
 import Link from "next/link";
 import { HouseIcon } from "../icons/breadcrumb/house-icon";
 import { Input } from "@nextui-org/input";
-import { SettingsIcon } from "../icons/sidebar/settings-icon";
-import { InfoIcon } from "../icons/accounts/info-icon";
-import { DotsIcon } from "../icons/accounts/dots-icon";
-import PostTable from "./PaymentTable";
+
 import { Slider, SliderValue } from "@nextui-org/slider";
 import { debounce } from "lodash";
 import { Pagination } from "@nextui-org/pagination";
-import { itemListPayment, typeListRealEstate } from "@/models/common";
+import { itemListPayment, itemListReport } from "@/models/common";
 import { useEffect, useState } from "react";
-import PostAPI from "@/services/postAPI";
-import PaymentTable from "./PaymentTable";
-import PaymentAPI from "@/services/paymentAPI";
+import ReportAPI from "@/services/reportAPI";
+import { Button, ButtonGroup } from "@nextui-org/button";
+import ReportTable from "./ReportTable";
 
-const PaymentManagementBody = () => {
+const ReportsBody = () => {
   const [originalDataList, setOriginalDataList] = useState<any>([]);
   const [dataList, setDataList] = useState<any>([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -25,7 +22,15 @@ const PaymentManagementBody = () => {
   const [loadingState, setLoadingState] = useState<any>("loading");
   const [limit, setLimit] = useState<SliderValue>(10);
 
-  const STATUS = 2;
+  const [status, setStatus] = useState(0);
+
+  const handleChangeStatus = (status: number) => {
+    const filteredPosts = originalDataList.filter(
+      (post: itemListReport) => post.trangThai == status
+    );
+    setDataList(filteredPosts);
+    setStatus(status);
+  };
 
   const handlePageChange = (page: number) => {
     setLoadingState("loading");
@@ -33,11 +38,11 @@ const PaymentManagementBody = () => {
   };
 
   useEffect(() => {
-    new PaymentAPI()
-      .getListPayment(currentPage - 1, limit as number, STATUS)
+    new ReportAPI()
+      .getListReports()
       ?.then((res: any) => {
         setLoadingState("idle");
-        // setTotalPage(res.tongSoTrang);
+        setTotalPage(res?.tongSoTrang);
         setOriginalDataList(res as itemListPayment[]);
         setDataList(res as itemListPayment[]);
       })
@@ -66,11 +71,11 @@ const PaymentManagementBody = () => {
         </li>
 
         <li className="flex gap-2">
-          <span>Thanh toán</span>
+          <span>Báo cáo</span>
         </li>
       </ul>
 
-      <h3 className="text-xl font-semibold">Danh sách thanh toán</h3>
+      <h3 className="text-xl font-semibold">Danh sách báo cáo</h3>
       <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex items-center gap-3 flex-wrap md:flex-nowrap">
           <Input
@@ -82,9 +87,22 @@ const PaymentManagementBody = () => {
             variant="bordered"
             onChange={handleSearchChange}
           />
-          <SettingsIcon />
-          <InfoIcon />
-          <DotsIcon />
+          <ButtonGroup>
+            <Button
+              onClick={() => handleChangeStatus(1)}
+              color={status == 1 ? "primary" : "default"}
+              className="font-[600]"
+            >
+              Đã xử lý
+            </Button>
+            <Button
+              onClick={() => handleChangeStatus(0)}
+              color={status == 0 ? "primary" : "default"}
+              className="font-[600]"
+            >
+              Chưa xử lý
+            </Button>
+          </ButtonGroup>
         </div>
         <div className="flex w-full max-w-xs flex-col gap-2"></div>
         <Slider
@@ -101,9 +119,9 @@ const PaymentManagementBody = () => {
         />
       </div>
       <div className="max-w-[95rem] mx-auto w-full">
-        <PaymentTable
+        <ReportTable
           setReload={setReload}
-          dataPayment={dataList}
+          dataReport={dataList}
           loadingState={loadingState}
         />
         <Pagination
@@ -118,4 +136,4 @@ const PaymentManagementBody = () => {
     </div>
   );
 };
-export default PaymentManagementBody;
+export default ReportsBody;

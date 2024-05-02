@@ -65,7 +65,7 @@ export const Accounts = () => {
         <li className="flex gap-2">
           <HouseIcon />
           <Link href={"/"}>
-            <span>Dashboard</span>
+            <span>Quản trị</span>
           </Link>
           <span> / </span>{" "}
         </li>

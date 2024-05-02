@@ -127,3 +127,23 @@ export const PUT_PERMISSION_ACCOUNT = {
   url: BASE_URL + "/quan-ly-tai-khoan/cap-quyen-tai-khoan",
   method: "put" as Methods,
 };
+
+export const GET_LIST_PAYMENT = {
+  url: BASE_URL + `/quan-ly-thanh-toan/danh-sach-thanh-toan-theo-tai-khoan`,
+  method: "get" as Methods,
+};
+
+export const GET_LIST_PAYMENT_ALL = {
+  url: BASE_URL + `/quan-ly-thanh-toan/danh-sach-thanh-toan`,
+  method: "get" as Methods,
+};
+
+export const GET_LIST_PACKAGE = {
+  url: BASE_URL + `/quan-ly-goi/danh-sach-goi`,
+  method: "get" as Methods,
+};
+
+export const GET_LIST_REPORT = {
+  url: BASE_URL + `/quan-ly-bao-cao/danh-sach-bao-cao`,
+  method: "get" as Methods,
+};

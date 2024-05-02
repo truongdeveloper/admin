@@ -1,24 +1,12 @@
-import { GET_SIMPLE_POST, PUT_POST_APPROVE } from "@/common/api/apiEndPoints";
+import { PUT_POST_APPROVE } from "@/common/api/apiEndPoints";
 import { getNameOfProvince } from "@/constant/conversionAdress";
-import conversionDate from "@/constant/conversionDate";
 import transformPriceToString from "@/constant/conversionNumberToPrice";
-import timeAgo from "@/constant/conversionTime";
 import { ConfirmModal } from "@/helper/ConfirmModal";
 import { ModalDetailPost } from "@/helper/ModalDetailPost";
 import { typeListRealEstate } from "@/models/common";
 import PostAPI from "@/services/postAPI";
-import {
-  faBan,
-  faCheck,
-  faCircleXmark,
-  faEye,
-  faHandshake,
-  faLock,
-  faLockOpen,
-  faPen,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEye, faHandshake } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button } from "@nextui-org/button";
 import {
   Spinner,
   Table,
@@ -33,7 +21,6 @@ import {
 import { isEmpty, uniqueId } from "lodash";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-import Link from "next/link";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 
@@ -116,9 +103,9 @@ const PostTable = ({
                           className="p-img"
                         />
                       )}
-                      <div className="ps-lg-4 md-pt-10 min-w-14 max-w-64">
+                      <div className="ps-lg-4 md-pt-10 min-w-14 max-w-64 ">
                         <button
-                          className="hover:text-orange-500 font-bold text-[16px]"
+                          className="hover:text-orange-500 font-[500] text-[16px] text-left"
                           onClick={() => {
                             setSelected(item);
                             setModalDetail(true);
@@ -130,7 +117,7 @@ const PostTable = ({
                           {/* {districtName},{" "} */}
                           {getNameOfProvince(item.batDongSan.viTri.tinhTp)}
                         </div>
-                        <strong className="font-[500]">
+                        <strong className="font-[500] text-danger">
                           {transformPriceToString(item.batDongSan.giaThue)}
                         </strong>
                       </div>

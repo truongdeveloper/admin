@@ -8,12 +8,14 @@ import { SearchIcon } from "../icons/searchicon";
 import { BurguerButton } from "./burguer-button";
 import { NotificationsDropdown } from "./notifications-dropdown";
 import { UserDropdown } from "./user-dropdown";
+import { useSession } from "next-auth/react";
 
 interface Props {
   children: React.ReactNode;
 }
 
 export const NavbarWrapper = ({ children }: Props) => {
+  const { data } = useSession();
   return (
     <div className="relative flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
       <Navbar
@@ -49,9 +51,9 @@ export const NavbarWrapper = ({ children }: Props) => {
 
           <NotificationsDropdown />
 
-          {/* <div className="max-md:hidden">
-            <SupportIcon />
-          </div> */}
+          <div className="max-md:hidden font-[600] text-lg">
+            {data?.user.tenTK}
+          </div>
 
           {/* <Link
             href="https://github.com/Siumauricio/nextui-dashboard-template"
@@ -60,7 +62,7 @@ export const NavbarWrapper = ({ children }: Props) => {
             <GithubIcon />
           </Link> */}
           <NavbarContent>
-            <UserDropdown />
+            <UserDropdown data={data} />
           </NavbarContent>
         </NavbarContent>
       </Navbar>

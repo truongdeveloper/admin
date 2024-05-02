@@ -106,3 +106,21 @@ export interface itemListPayment {
   maGiaoDich: any;
   trangThai: any;
 }
+
+export interface itemListPackage {
+  id: number;
+  tenGoi: string;
+  soTien: number;
+  moTa: string;
+}
+
+export interface itemListReport {
+  id: number;
+  maTK: number;
+  maBaiDang: number;
+  lyDo: string;
+  email: string;
+  sdt: string;
+  trangThai: number;
+  maNguoiXuLy: number;
+}

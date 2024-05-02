@@ -35,14 +35,14 @@ export const ModalDetailPost = ({
           onOpenChange={toggle}
           scrollBehavior="inside"
           size="4xl"
-          style={{ overflowX: "hidden", marginTop: "250px" }}
+          style={{ overflowX: "hidden" }}
         >
           <ModalContent>
             <>
               <ModalHeader className="flex flex-col gap-1">
                 {item?.tieuDe}
               </ModalHeader>
-              <ModalBody>
+              <ModalBody style={{ overflowX: "hidden" }}>
                 <>
                   <div className="col-lg-12">
                     <div className="open-email-container pb-40 d-flex flex-column">
@@ -140,7 +140,10 @@ export const ModalDetailPost = ({
                                 </td>
                               </tr>
                               <tr>
-                                <td className="font-bold border border-gray-200 px-3">
+                                <td
+                                  className="font-bold border border-gray-200 px-3"
+                                  style={{ minWidth: "100px" }}
+                                >
                                   Mô tả:
                                 </td>
                                 <td className="border border-gray-200 px-3">

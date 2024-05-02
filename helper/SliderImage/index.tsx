@@ -13,7 +13,6 @@ export default function SliderImage({
     speed: 500,
     slidesToShow: 1,
   };
-  console.log(imageList);
   return (
     <Slider {...settings} infinite={imageList.length >= 2}>
       {imageList.length > 1 &&
@@ -26,7 +25,7 @@ export default function SliderImage({
                 src={item.url}
                 alt="Anh BDS"
                 className="rounded-lg"
-                style={{ height: "300px", objectFit: "contain" }}
+                style={{ height: "400px", objectFit: "contain" }}
               />
             </div>
           </div>

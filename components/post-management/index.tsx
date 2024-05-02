@@ -2,14 +2,10 @@
 
 import Link from "next/link";
 import { HouseIcon } from "../icons/breadcrumb/house-icon";
-import { UsersIcon } from "../icons/breadcrumb/users-icon";
 import { Input } from "@nextui-org/input";
 import { SettingsIcon } from "../icons/sidebar/settings-icon";
 import { InfoIcon } from "../icons/accounts/info-icon";
 import { DotsIcon } from "../icons/accounts/dots-icon";
-import { AddUser } from "../accounts/add-user";
-import { TableWrapper } from "../table/table";
-import { Select } from "@nextui-org/select";
 import PostTable from "./PostTable";
 import { Slider, SliderValue } from "@nextui-org/slider";
 import { debounce } from "lodash";

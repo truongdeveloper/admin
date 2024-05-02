@@ -11,8 +11,7 @@ import React from "react";
 import { DarkModeSwitch } from "./darkmodeswitch";
 import { signOut, useSession } from "next-auth/react";
 
-export const UserDropdown = () => {
-  const { data } = useSession();
+export const UserDropdown = ({ data }: any) => {
   return (
     <Dropdown>
       <NavbarItem>
@@ -32,13 +31,13 @@ export const UserDropdown = () => {
         aria-label="User menu actions"
         onAction={(actionKey) => console.log({ actionKey })}
       >
-        {/* <DropdownItem
+        <DropdownItem
           key="profile"
           className="flex flex-col justify-start w-full items-start"
         >
-          <p>Signed in as</p>
-          <p>zoey@example.com</p>
-        </DropdownItem> */}
+          <p>Đăng nhập với tài khoản:</p>
+          <p>{data?.user?.tenTK}</p>
+        </DropdownItem>
         {/* <DropdownItem key="settings">My Settings</DropdownItem>
         <DropdownItem key="team_settings">Team Settings</DropdownItem>
         <DropdownItem key="analytics">Analytics</DropdownItem>
@@ -55,9 +54,9 @@ export const UserDropdown = () => {
         >
           Log Out
         </DropdownItem>
-        {/* <DropdownItem key="switch">
+        <DropdownItem key="switch">
           <DarkModeSwitch />
-        </DropdownItem> */}
+        </DropdownItem>
       </DropdownMenu>
     </Dropdown>
   );

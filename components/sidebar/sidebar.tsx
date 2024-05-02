@@ -17,13 +17,15 @@ import { usePathname } from "next/navigation";
 import { Button } from "@nextui-org/button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRightFromBracket } from "@fortawesome/free-solid-svg-icons";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { DevIcon } from "../icons/sidebar/dev-icon";
 
 export const SidebarWrapper = () => {
   const pathname = usePathname();
   const { collapsed, setCollapsed } = useSidebarContext();
+  const { data } = useSession();
 
+  const isAdmin = data?.user.quyen[0].authority == "Quản trị viên" || false;
   return (
     <aside className="h-screen z-[202] sticky top-0">
       {collapsed ? (
@@ -38,23 +40,27 @@ export const SidebarWrapper = () => {
         <div className="flex flex-col justify-between h-full">
           <div className={Sidebar.Body()}>
             <SidebarItem
-              title="Dashboard"
+              title="Thống kê"
               icon={<HomeIcon />}
               isActive={pathname === "/dashboard"}
               href="/"
             />
-            <SidebarMenu title="Main Menu">
+            <SidebarMenu title="Quản lý">
               <SidebarItem
                 isActive={pathname === "/dashboard/accounts"}
-                title="Quản lý Tài kkhoản"
+                title="Quản lý Tài khoản"
                 icon={<AccountsIcon />}
                 href="/dashboard/accounts"
               />
-              <SidebarItem
-                isActive={pathname === "/payments"}
-                title="Thống kê thanh toán"
-                icon={<PaymentsIcon />}
-              />
+              {isAdmin && (
+                <SidebarItem
+                  isActive={pathname === "/dashboard/payment-management"}
+                  title="Thống kê thanh toán"
+                  icon={<PaymentsIcon />}
+                  href="/dashboard/payment-management"
+                />
+              )}
+
               <SidebarItem
                 isActive={
                   pathname === "/dashboard/post-management/approve-post"
@@ -63,12 +69,15 @@ export const SidebarWrapper = () => {
                 icon={<ViewIcon />}
                 href="/dashboard/post-management/approve-post"
               />
-              <SidebarItem
-                isActive={pathname === "/dashboard/collaborators"}
-                title="Quản lý Cộng tác viên"
-                icon={<DevIcon />}
-                href="/dashboard/collaborators"
-              />
+              {isAdmin && (
+                <SidebarItem
+                  isActive={pathname === "/dashboard/collaborators"}
+                  title="Quản lý Cộng tác viên"
+                  icon={<DevIcon />}
+                  href="/dashboard/collaborators"
+                />
+              )}
+
               {/* <SidebarItem
                 isActive={pathname === "/dashboard/post-management"}
                 title="Danh sách bài đăng"
@@ -90,11 +99,15 @@ export const SidebarWrapper = () => {
                 title="Quản lý bài đăng"
                 isActive={false}
               /> */}
-              <SidebarItem
-                isActive={pathname === "/customers"}
-                title="Quản lý Gói"
-                icon={<CustomersIcon />}
-              />
+              {isAdmin && (
+                <SidebarItem
+                  isActive={pathname === "/dashboard/packages"}
+                  title="Quản lý Gói"
+                  icon={<CustomersIcon />}
+                  href="/dashboard/packages"
+                />
+              )}
+
               <SidebarItem
                 isActive={pathname === "/dashboard/post-management"}
                 title="Quản lý bài đăng"
@@ -102,9 +115,10 @@ export const SidebarWrapper = () => {
                 href="/dashboard/post-management"
               />
               <SidebarItem
-                isActive={pathname === "/reports"}
+                isActive={pathname === "/dashboard/reports"}
                 title=" Quản lý Report"
                 icon={<ReportsIcon />}
+                href="/dashboard/reports"
               />
             </SidebarMenu>
 
