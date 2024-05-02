@@ -36,10 +36,12 @@ const PaymentManagementBody = () => {
     new PaymentAPI()
       .getListPayment(currentPage - 1, limit as number, STATUS)
       ?.then((res: any) => {
-        setLoadingState("idle");
         // setTotalPage(res.tongSoTrang);
         setOriginalDataList(res as itemListPayment[]);
-        setDataList(res as itemListPayment[]);
+        setTimeout(() => {
+          setDataList(res as itemListPayment[]);
+          setLoadingState("idle");
+        }, 1000);
       })
       .finally(() => {
         setReload(false);

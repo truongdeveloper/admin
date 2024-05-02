@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
 import Link from "next/link";
@@ -43,8 +44,12 @@ const ReportsBody = () => {
       ?.then((res: any) => {
         setLoadingState("idle");
         setTotalPage(res?.tongSoTrang);
-        setOriginalDataList(res as itemListPayment[]);
-        setDataList(res as itemListPayment[]);
+        setOriginalDataList(res as itemListReport[]);
+        setDataList(
+          res.filter(
+            (post: itemListReport) => post.trangThai == status
+          ) as itemListReport[]
+        );
       })
       .finally(() => {
         setReload(false);

@@ -36,7 +36,17 @@ export const SidebarWrapper = () => {
           collapsed: collapsed,
         })}
       >
-        <div className={Sidebar.Header()}></div>
+        <div
+          className={Sidebar.Header()}
+          style={{
+            fontWeight: 600,
+            fontSize: "30px",
+            fontFamily: "Times New Roman, sans-serif",
+            justifyContent: "center",
+          }}
+        >
+          HOMY
+        </div>
         <div className="flex flex-col justify-between h-full">
           <div className={Sidebar.Body()}>
             <SidebarItem

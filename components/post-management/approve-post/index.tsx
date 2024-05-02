@@ -38,10 +38,12 @@ const ApprovePostBody = () => {
     new PostAPI()
       .getPostListStatus(currentPage - 1, limit as number, STATUS)
       ?.then((res: any) => {
-        setLoadingState("idle");
         setTotalPage(res.tongSoTrang);
         setOriginalDataPost(res.danhSach as typeListRealEstate[]);
-        setDataPost(res.danhSach as typeListRealEstate[]);
+        setTimeout(() => {
+          setLoadingState("idle");
+          setDataPost(res.danhSach as typeListRealEstate[]);
+        }, 1000);
       })
       .finally(() => {
         setReload(false);

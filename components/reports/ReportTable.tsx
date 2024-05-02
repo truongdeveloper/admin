@@ -1,15 +1,8 @@
-import conversionDate from "@/constant/conversionDate";
-import {
-  conversionStatusPayment,
-  conversionTypePayment,
-} from "@/constant/conversionStatusPayment";
-import { ModalDetailPayment } from "@/helper/ModalDetailPayment";
 import { ModalDetailReport } from "@/helper/ModalDetailReport";
-import { itemListPayment, itemListReport } from "@/models/common";
+import { itemListReport } from "@/models/common";
 import { faEye } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  Chip,
   Spinner,
   Table,
   TableBody,
@@ -61,7 +54,7 @@ const PaymentTable = ({
 
                   <TableCell>
                     <div className={"flex flex-col"}>
-                      <div>{item.email}</div>
+                      <div className="text-gray-500 pb-1">{item.email}</div>
                       <div>{item.sdt}</div>
                     </div>
                   </TableCell>
@@ -104,6 +97,7 @@ const PaymentTable = ({
         isOpen={modalDetail}
         setIsOpen={setModalDetail}
         item={selected}
+        setReload={setReload}
       />
     </div>
   );

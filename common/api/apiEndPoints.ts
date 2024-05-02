@@ -147,3 +147,8 @@ export const GET_LIST_REPORT = {
   url: BASE_URL + `/quan-ly-bao-cao/danh-sach-bao-cao`,
   method: "get" as Methods,
 };
+
+export const PUT_PROCESS_REPORT = {
+  url: BASE_URL + `/quan-ly-bao-cao/xu-ly-bao-cao-bai-dang`,
+  method: "put" as Methods,
+};
