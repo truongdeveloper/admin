@@ -76,7 +76,7 @@ export const Accounts = () => {
         </li>
       </ul>
 
-      <h3 className="text-xl font-semibold">Duyệt bài đăng</h3>
+      <h3 className="text-xl font-semibold">Quản lý tài khoản</h3>
       <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex items-center gap-3 flex-wrap md:flex-nowrap">
           <Input

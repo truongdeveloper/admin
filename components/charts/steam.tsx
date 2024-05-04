@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Chart, { Props } from "react-apexcharts";
 
-const state: Props["series"] = [
+const state1: Props["series"] = [
   {
-    name: "Series1",
-    data: [31, 40, 28, 51, 42, 109, 100],
+    name: "Series2",
+    data: [11, 32, 45, 32, 34, 52, 41],
+  },
+  {
+    name: "Series2",
+    data: [11, 32, 45, 32, 34, 52, 41],
   },
   {
     name: "Series2",
@@ -14,7 +18,7 @@ const state: Props["series"] = [
 
 const options: Props["options"] = {
   chart: {
-    type: "area",
+    type: "bar",
     animations: {
       easing: "linear",
       speed: 300,
@@ -34,7 +38,20 @@ const options: Props["options"] = {
   },
 
   xaxis: {
-    categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
+    categories: [
+      "Tháng 1",
+      "Tháng 2",
+      "Tháng 3",
+      "Tháng 4",
+      "Tháng 5",
+      "Tháng 6",
+      "Tháng 7",
+      "Tháng 8",
+      "Tháng 9",
+      "Tháng 10",
+      "Tháng 11",
+      "Tháng 12",
+    ],
     labels: {
       // show: false,
       style: {
@@ -51,7 +68,6 @@ const options: Props["options"] = {
   yaxis: {
     labels: {
       style: {
-        // hsl(var(--nextui-content1-foreground))
         colors: "hsl(var(--nextui-default-800))",
       },
     },
@@ -75,12 +91,13 @@ const options: Props["options"] = {
   markers: false,
 };
 
-export const Steam = () => {
+export const Steam = ({ state }: { state: Props["series"] }) => {
+  console.log(state);
   return (
     <>
       <div className="w-full z-20">
         <div id="chart">
-          {/* <Chart options={options} series={state} type="area" height={425} /> */}
+          <Chart options={options} series={state} type={"bar"} height={425} />
         </div>
       </div>
     </>

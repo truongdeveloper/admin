@@ -152,3 +152,13 @@ export const PUT_PROCESS_REPORT = {
   url: BASE_URL + `/quan-ly-bao-cao/xu-ly-bao-cao-bai-dang`,
   method: "put" as Methods,
 };
+
+export const GET_STATISTICAL = {
+  url: BASE_URL + `/quan-ly-thong-ke/`,
+  method: "get" as Methods,
+};
+
+export const GET_STATISTICAL_PAYMENT = {
+  url: BASE_URL + `/quan-ly-thong-ke/thanh-toan-goi?nam=`,
+  method: "get" as Methods,
+};
