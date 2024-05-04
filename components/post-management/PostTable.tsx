@@ -5,7 +5,7 @@ import { ConfirmModal } from "@/helper/ConfirmModal";
 import { ModalDetailPost } from "@/helper/ModalDetailPost";
 import { typeListRealEstate } from "@/models/common";
 import PostAPI from "@/services/postAPI";
-import { faEye, faHandshake } from "@fortawesome/free-solid-svg-icons";
+import { faEye, faHandshake, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Spinner,
@@ -39,25 +39,22 @@ const PostTable = ({
   const [modalDetail, setModalDetail] = useState(false);
   const [rejectModal, setRejectModal] = useState(false);
 
-  const handleApprovePost = () => {
-    new PostAPI()
-      .putPostApprove(
-        `${PUT_POST_APPROVE.url}?baiDang=${selected?.id}&nguoiKiemDuyet=${data?.user.id}`
-      )
-      ?.then((res) => {
-        if (res.id == selected?.id) {
-          toast("Duyệt bài đăng thành công", {
-            type: "success",
-          });
-          setReload(true);
-        } else {
-          toast("Duyệt bài thất bại!", {
-            type: "warning",
-          });
-        }
-      });
+  const handleDeletePost = () => {
+    new PostAPI().putDeletePost(selected?.id, data?.user.id)?.then((res) => {
+      if (res.id == selected?.id) {
+        toast("Ẩn bài đăng thành công", {
+          type: "success",
+        });
+        setReload(true);
+      } else {
+        toast("Ẩn bài thất bại!", {
+          type: "warning",
+        });
+      }
+    });
     setConfirmModal(false);
   };
+
   return (
     <div className=" w-full flex flex-col gap-4">
       <Table>
@@ -135,7 +132,7 @@ const PostTable = ({
 
                   <TableCell>
                     <div className="flex items-center gap-5 ">
-                      <div>
+                      <div className="flex gap-5">
                         <Tooltip content="Chi tiết">
                           <button
                             onClick={() => {
@@ -143,6 +140,15 @@ const PostTable = ({
                             }}
                           >
                             <FontAwesomeIcon icon={faEye} />
+                          </button>
+                        </Tooltip>
+                        <Tooltip content="Ẩn bài" color="danger">
+                          <button
+                            onClick={() => {
+                              setSelected(item), setConfirmModal(true);
+                            }}
+                          >
+                            <FontAwesomeIcon icon={faTrash} />
                           </button>
                         </Tooltip>
                       </div>
@@ -182,10 +188,10 @@ const PostTable = ({
       <ConfirmModal
         isOpen={confirmModal}
         setIsOpen={setConfirmModal}
-        title="Duyệt bài đăng này"
-        content="Bài đăng sẽ được tìm kiếm ở công khai"
-        icon={<FontAwesomeIcon icon={faHandshake} style={{ color: "green" }} />}
-        onConfirm={handleApprovePost}
+        title="Ẩn bài đăng này khỏi hệ thống"
+        content="Bài đăng sẽ ẩn khỏi hệ thống và người dùng không thể tìm kiếm"
+        icon={<FontAwesomeIcon icon={faHandshake} style={{ color: "red" }} />}
+        onConfirm={handleDeletePost}
       />
       <ModalDetailPost
         isOpen={modalDetail}

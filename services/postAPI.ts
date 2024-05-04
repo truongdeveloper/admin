@@ -2,6 +2,7 @@ import axiosService from "@/common/api/AxiosServices";
 import {
   GET_POST_BY_STATUS,
   GET_SIMPLE_POST,
+  PUT_DELETE_POST,
   PUT_POST_APPROVE,
   PUT_POST_REJECT,
 } from "@/common/api/apiEndPoints";
@@ -42,6 +43,17 @@ class PostAPI {
       body: {
         maBD: idPost,
         maTK: idAccount,
+      },
+    });
+  }
+
+  putDeletePost(postId: number | undefined, accountId: number | undefined) {
+    return axiosService({
+      url: PUT_DELETE_POST.url,
+      method: PUT_DELETE_POST.method,
+      body: {
+        maBD: postId,
+        maTK: accountId,
       },
     });
   }

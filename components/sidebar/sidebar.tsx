@@ -58,14 +58,14 @@ export const SidebarWrapper = () => {
             <SidebarMenu title="Quản lý">
               <SidebarItem
                 isActive={pathname === "/dashboard/accounts"}
-                title="Quản lý Tài khoản"
+                title="Tài khoản"
                 icon={<AccountsIcon />}
                 href="/dashboard/accounts"
               />
               {isAdmin && (
                 <SidebarItem
                   isActive={pathname === "/dashboard/payment-management"}
-                  title="Thống kê thanh toán"
+                  title="Danh sách thanh toán"
                   icon={<PaymentsIcon />}
                   href="/dashboard/payment-management"
                 />
@@ -82,7 +82,7 @@ export const SidebarWrapper = () => {
               {isAdmin && (
                 <SidebarItem
                   isActive={pathname === "/dashboard/collaborators"}
-                  title="Quản lý Cộng tác viên"
+                  title="Cộng tác viên"
                   icon={<DevIcon />}
                   href="/dashboard/collaborators"
                 />
@@ -112,7 +112,7 @@ export const SidebarWrapper = () => {
               {isAdmin && (
                 <SidebarItem
                   isActive={pathname === "/dashboard/packages"}
-                  title="Quản lý Gói"
+                  title="Gói thanh toán"
                   icon={<CustomersIcon />}
                   href="/dashboard/packages"
                 />
@@ -120,13 +120,13 @@ export const SidebarWrapper = () => {
 
               <SidebarItem
                 isActive={pathname === "/dashboard/post-management"}
-                title="Quản lý bài đăng"
+                title="Bài đăng bất động sản"
                 icon={<ProductsIcon />}
                 href="/dashboard/post-management"
               />
               <SidebarItem
                 isActive={pathname === "/dashboard/reports"}
-                title=" Quản lý Report"
+                title=" Báo cáo vi phạm"
                 icon={<ReportsIcon />}
                 href="/dashboard/reports"
               />

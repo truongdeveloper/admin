@@ -197,7 +197,7 @@ const AccountTable = ({
         onOpenChange={() => setModalPermission(!modalPermission)}
       >
         <ModalContent>
-          <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+          <ModalHeader className="flex flex-col gap-1"></ModalHeader>
           <ModalBody>
             <RadioGroup
               label="Chọn phần quyền"

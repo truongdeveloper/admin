@@ -162,3 +162,8 @@ export const GET_STATISTICAL_PAYMENT = {
   url: BASE_URL + `/quan-ly-thong-ke/thanh-toan-goi?nam=`,
   method: "get" as Methods,
 };
+
+export const PUT_DELETE_POST = {
+  url: BASE_URL + "/quan-ly-bai-dang/xoa-bai-dang",
+  method: "put" as Methods,
+};
